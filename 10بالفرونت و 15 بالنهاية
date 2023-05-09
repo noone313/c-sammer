@@ -1,0 +1,119 @@
+using System;
+
+namespace LinkedList
+{
+    internal class Node
+    {
+        internal int data;
+        internal Node next;
+
+        public Node(int data)
+        {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    internal class LinkedList
+    {
+        Node head = null;
+        public void creat_linkedlist(int data)
+        {
+            head = new Node(data);
+        }
+        public void Create_LinkedList_Of_N_Nodes()
+        {
+            int no, d;
+            Console.Write("How many nelements you link to create :");
+            no = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < no; i++)
+            {
+                Console.WriteLine("---------------");
+                Console.Write(" Enter item data : ");
+                d = Convert.ToInt32(Console.ReadLine());
+                InsertIntoFront(d);
+            }
+        }
+
+        public void Insert10NodesInFront()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("-----------------------");
+                Console.Write("Enter item data to insert in front: ");
+                int data = Convert.ToInt32(Console.ReadLine());
+                InsertIntoFront(data);
+            }
+        }
+
+        public void Insert15NodesInLast()
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                Console.WriteLine("-----------------------");
+                Console.Write("Enter item data to insert in last: ");
+                int data = Convert.ToInt32(Console.ReadLine());
+                InsertIntoLast(data);
+            }
+        }
+
+        public void InsertIntoFront(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
+
+        public void InsertIntoLast(int data)
+        {
+            Node newNode = new Node(data);
+
+            if (head == null)
+            {
+                head = newNode;
+                return;
+            }
+
+            Node lastNode = GetLastNode();
+            lastNode.next = newNode;
+        }
+
+        public Node GetLastNode()
+        {
+            Node temp = head;
+
+            while (temp.next != null)
+            {
+                temp = temp.next;
+            }
+
+            return temp;
+        }
+
+        public void PrintAll()
+        {
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Printing all nodes:");
+            Node temp = head;
+
+            while (temp != null)
+            {
+                Console.WriteLine(temp.data);
+                temp = temp.next;
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList myList = new LinkedList();
+            myList.Create_LinkedList_Of_N_Nodes();
+            myList.Insert10NodesInFront();
+            myList.Insert15NodesInLast();
+            myList.PrintAll();
+            Console.ReadKey();
+        }
+    }
+}

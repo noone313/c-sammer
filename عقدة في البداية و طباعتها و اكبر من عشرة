@@ -1,0 +1,101 @@
+using System;
+namespace LinkedList
+{
+    internal class Node
+    {
+        internal int data;
+        internal Node next;
+
+        public Node(int data)
+        {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    internal class LinkedList
+    {
+        Node head = null;
+
+        public void creat_linkedlist(int data)
+        {
+            head = new Node(data);
+        }
+        public void Create_LinkedList_Of_200_Nodes()
+        {
+            int no, d;
+            Console.Write("How many nelements you link to create :");
+            no = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < no; i++)
+            {
+                Console.WriteLine("---------------");
+                Console.Write(" Enter item data : ");
+                d = Convert.ToInt32(Console.ReadLine());
+                InsertIntoFront(d);
+            }
+        }
+
+        public void InsertNodeGreaterThan10()
+        {
+            Console.WriteLine("-----------------------");
+            Console.Write("Enter item data greater than 10: ");
+            int data = Convert.ToInt32(Console.ReadLine());
+
+            while (data <= 10)
+            {
+                Console.Write("Please enter a value greater than 10: ");
+                data = Convert.ToInt32(Console.ReadLine());
+            }
+
+            InsertIntoFront(data);
+        }
+
+        public void InsertNodeLessThan10()
+        {
+            Console.WriteLine("-----------------------");
+            Console.Write("Enter item data less than 10: ");
+            int data = Convert.ToInt32(Console.ReadLine());
+
+            while (data >= 10)
+            {
+                Console.Write("Please enter a value less than 10: ");
+                data = Convert.ToInt32(Console.ReadLine());
+            }
+
+            InsertIntoFront(data);
+        }
+
+        public void InsertIntoFront(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
+
+        public void PrintAll()
+        {
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Printing all nodes:");
+            Node temp = head;
+
+            while (temp != null)
+            {
+                Console.WriteLine(temp.data);
+                temp = temp.next;
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList myList = new LinkedList();
+            myList.Create_LinkedList_Of_200_Nodes();
+            myList.InsertNodeGreaterThan10();
+            myList.InsertNodeLessThan10();
+            myList.PrintAll();
+            Console.ReadKey();
+        }
+    }
+}

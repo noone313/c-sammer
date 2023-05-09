@@ -1,0 +1,96 @@
+using System;
+
+namespace LinkedListExample
+{
+    internal class Node
+    {
+        internal int data;
+        internal Node next;
+
+        public Node(int data)
+        {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    internal class LinkedList
+    {
+        Node head = null;
+        private int count;
+
+        public void CreateLinkedListOf200Nodes()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                Console.WriteLine("-----------------------");
+                Console.Write("Enter item data: ");
+                int data = Convert.ToInt32(Console.ReadLine());
+                InsertIntoFront(data);
+            }
+        }
+
+        public void InsertNodeGreaterThan10()
+        {
+            Console.WriteLine("-----------------------");
+            Console.Write("Enter item data greater than 10: ");
+            int data = Convert.ToInt32(Console.ReadLine());
+
+            while (data <= 10)
+            {
+                Console.Write("Please enter a value greater than 10: ");
+                data = Convert.ToInt32(Console.ReadLine());
+            }
+
+            InsertIntoFront(data);
+        }
+
+        public void InsertNodeLessThan10()
+        {
+            Console.WriteLine("-----------------------");
+            Console.Write("Enter item data less than 10: ");
+            int data = Convert.ToInt32(Console.ReadLine());
+
+            while (data >= 10)
+            {
+                Console.Write("Please enter a value less than 10: ");
+                data = Convert.ToInt32(Console.ReadLine());
+            }
+
+            InsertIntoFront(data);
+        }
+
+        public void InsertIntoFront(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = head;
+            head = newNode;
+        }
+
+        public void PrintAll()
+        {
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Printing all nodes:");
+            Node temp = head;
+
+            while (temp != null)
+            {
+                Console.WriteLine(temp.data);
+                temp = temp.next;
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList myList = new LinkedList();
+            myList.CreateLinkedListOf200Nodes();
+            myList.InsertNodeGreaterThan10();
+            myList.InsertNodeLessThan10();
+            myList.PrintAll();
+            Console.ReadKey();
+        }
+    }
+}

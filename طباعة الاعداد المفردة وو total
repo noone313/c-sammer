@@ -1,0 +1,75 @@
+using System;
+namespace Linkedlist
+{
+    internal class Node
+    {
+         
+        internal int data;
+        internal Node next;
+        public Node(int data)
+        {
+            this.data = data;
+            next = null;
+        }
+    }
+    internal class linkedlist
+    {
+        Node head = null;
+        private int count;
+
+        public void creat_linkedlist(int data)
+        {
+            head = new Node(data);
+        }
+        public void creat_linkedlist_of_80_node()
+        {
+            int count = 0;
+            int no, d;
+            Console.Write("How many nelements you link to create :");
+            no = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < no; i++)
+            {
+                Console.WriteLine("---------------");
+                Console.Write(" Enter item data : ");
+                d = Convert.ToInt32(Console.ReadLine());
+                insert_into_front(d);
+            }
+        }
+        public void insert_into_front(int data)
+        {
+            Node N_node = new Node(data);
+            N_node.next = head;
+            head = N_node;
+        }
+        public void print_all()
+        {
+            Console.WriteLine("Print all Node :");
+            Node temp = head;
+            while (temp != null)
+            {
+                if (temp.data % 2 != 0)
+                {
+
+                    count++;
+                    Console.WriteLine("{0} is odd ", temp.data);
+                }
+                    temp = temp.next; 
+                
+            }
+            Console.WriteLine("{0} total odd", count);
+
+        }
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                linkedlist mylist = new linkedlist();
+                mylist.creat_linkedlist_of_80_node();
+                Console.WriteLine("-------------------");
+                mylist.print_all();
+
+                Console.ReadKey();
+            }
+        }
+    }
+}
